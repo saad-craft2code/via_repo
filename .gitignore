@@ -33,3 +33,10 @@ Thumbs.db
 # generated prisma artifacts if you do not want them in version control
 # prisma/*.db
 
+# local tooling and generated lockfiles
+.zscripts/
+bun.lock
+
+# npm lockfile is okay to keep if you want a reproducible install
+# keep package-lock.json tracked by default
+
