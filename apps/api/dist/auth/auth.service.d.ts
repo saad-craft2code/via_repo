@@ -1,0 +1,43 @@
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import { PrismaService } from '../prisma/prisma.service';
+import type { LoginDto } from './dto/login.dto';
+import type { RegisterDto } from './dto/register.dto';
+import type { AuthResponse, JwtPayload } from '@via/shared-types';
+export declare class AuthService {
+    private readonly prisma;
+    private readonly jwt;
+    private readonly config;
+    private readonly logger;
+    constructor(prisma: PrismaService, jwt: JwtService, config: ConfigService);
+    seedDemoAccounts(): Promise<void>;
+    login(dto: LoginDto): Promise<AuthResponse>;
+    register(dto: RegisterDto): Promise<AuthResponse>;
+    me(userId: string): Promise<{
+        email: string;
+        role: import(".prisma/client").$Enums.UserRole;
+        name: string;
+        phone: string | null;
+        companyName: string | null;
+        businessLicense: string | null;
+        tourGuideLicense: string | null;
+        yearsExperience: number | null;
+        languagesSpoken: string[];
+        id: string;
+        firebaseUid: string | null;
+        passwordHash: string | null;
+        avatarUrl: string | null;
+        kycStatus: import(".prisma/client").$Enums.KycStatus;
+        kycSubmittedAt: Date | null;
+        kycReviewedAt: Date | null;
+        kycRejectionReason: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    private buildAuthResponse;
+    verifyToken(token: string): Promise<JwtPayload>;
+    private normaliseRole;
+    private roleToPrisma;
+    private roleFromPrisma;
+    private hashPassword;
+}
