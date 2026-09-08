@@ -12,6 +12,8 @@ node_modules
 out
 build
 coverage
+**/dist
+**/*.tsbuildinfo
 
 # logs
 dev.log
