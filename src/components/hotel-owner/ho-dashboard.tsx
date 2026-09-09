@@ -30,12 +30,13 @@ export function HODashboard() {
         className="rounded-2xl p-6 bg-gradient-to-br from-neutral-950 via-zinc-900 to-zinc-700 text-white relative overflow-hidden"
       >
         <div className="absolute inset-0 oasis-mesh opacity-30" />
+        <div className="absolute top-0 right-0 h-40 w-40 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl" />
         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <p className="text-white/80 text-sm">
               {t("welcome_back", lang)}, {lang === "ar" ? profile.fullNameAr.split(" ")[0] : profile.fullNameEn.split(" ")[0]} 👋
             </p>
-            <h2 className="text-2xl font-bold mt-1">
+            <h2 className="text-3xl font-bold mt-1 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
               {lang === "ar" ? `${todayCheckins} وصولات و ${mockHotelBookings.filter(b => b.endDate === "2026-08-01").length} مغادرات اليوم` : `${todayCheckins} check-ins and ${mockHotelBookings.filter(b => b.endDate === "2026-08-01").length} check-outs today`}
             </h2>
             <p className="text-white/70 text-sm mt-1.5">
@@ -170,6 +171,69 @@ export function HODashboard() {
           ))}
         </CardContent>
       </Card>
+
+      {/* Enhanced Hotel Performance Insights */}
+      <div className="grid md:grid-cols-2 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <Card className="border-border/70 overflow-hidden">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">{lang === "ar" ? "أداء الفنادق" : "Hotels Performance"}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {mockHotels.slice(0, 3).map((h) => (
+                <div key={h.id} className="p-3 rounded-lg border border-border/40 hover:border-primary/30 hover:bg-muted/30 transition-all cursor-pointer">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <p className="text-sm font-semibold">{lang === "ar" ? h.nameAr : h.name}</p>
+                      <p className="text-xs text-muted-foreground">{h.occupancyRate}% {lang === "ar" ? "مشغول" : "occupied"}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-bold text-primary">{formatCurrency(h.monthlyRevenue, lang)}</p>
+                      <div className="flex items-center gap-0.5 justify-end mt-0.5">
+                        <Star className="h-3 w-3 fill-[oklch(0.75_0.14_80)] text-[oklch(0.75_0.14_80)]" />
+                        <span className="text-xs font-medium">{h.rating?.toFixed(1) || "4.5"}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-1.5">
+                    <div className="bg-gradient-to-r from-primary to-primary/60 h-1.5 rounded-full" style={{ width: `${h.occupancyRate}%` }} />
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <Card className="border-border/70">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">{lang === "ar" ? "نصائح تحسين الإشغال" : "Occupancy Tips"}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                <p className="text-xs font-semibold text-primary mb-1">{lang === "ar" ? "📸 تحديث الصور" : "📸 Update Photos"}</p>
+                <p className="text-xs text-muted-foreground">{lang === "ar" ? "صور عالية الجودة تزيد الحجوزات بـ 40%" : "High-quality photos increase bookings by 40%"}</p>
+              </div>
+              <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+                <p className="text-xs font-semibold text-accent mb-1">{lang === "ar" ? "🎯 أسعار تنافسية" : "🎯 Competitive Pricing"}</p>
+                <p className="text-xs text-muted-foreground">{lang === "ar" ? "راجع الأسعار مقابل الفنادق المنافسة" : "Match competitive rates in your area"}</p>
+              </div>
+              <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
+                <p className="text-xs font-semibold text-green-600 mb-1">{lang === "ar" ? "⭐ شجع التقييمات" : "⭐ Encourage Reviews"}</p>
+                <p className="text-xs text-muted-foreground">{lang === "ar" ? "فنادق بتقييمات عالية تحصل على حجوزات أكثر" : "Hotels with high ratings get more bookings"}</p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
     </div>
   );
 }

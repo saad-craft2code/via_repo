@@ -30,12 +30,13 @@ export function BCDashboard() {
         className="rounded-2xl p-6 bg-gradient-to-br from-neutral-950 via-zinc-900 to-zinc-700 text-white relative overflow-hidden"
       >
         <div className="absolute inset-0 oasis-mesh opacity-30" />
+        <div className="absolute top-0 right-0 h-40 w-40 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl" />
         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <p className="text-white/80 text-sm">
               {t("welcome_back", lang)}, {lang === "ar" ? profile.fullNameAr.split(" ")[0] : profile.fullNameEn.split(" ")[0]} 👋
             </p>
-            <h2 className="text-2xl font-bold mt-1">
+            <h2 className="text-3xl font-bold mt-1 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
               {lang === "ar" ? "لديك 5 حجوزات جديدة هذا الأسبوع" : "You have 5 new bookings this week"}
             </h2>
             <p className="text-white/70 text-sm mt-1.5">
@@ -185,6 +186,69 @@ export function BCDashboard() {
           ))}
         </CardContent>
       </Card>
+
+      {/* Enhanced Performance Insights */}
+      <div className="grid md:grid-cols-2 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <Card className="border-border/70 overflow-hidden">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">{lang === "ar" ? "أفضل الباقات الأداء" : "Top Performing Bundles"}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {mockBundles.slice(0, 3).map((b, i) => (
+                <div key={b.id} className="p-3 rounded-lg border border-border/40 hover:border-primary/30 hover:bg-muted/30 transition-all cursor-pointer">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <p className="text-sm font-semibold">{lang === "ar" ? b.nameAr : b.name}</p>
+                      <p className="text-xs text-muted-foreground">{b.totalBookings} {lang === "ar" ? "حجوزات" : "bookings"}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-bold text-primary">{formatCurrency(b.revenue, lang)}</p>
+                      <div className="flex items-center gap-0.5 justify-end mt-0.5">
+                        <Star className="h-3 w-3 fill-[oklch(0.75_0.14_80)] text-[oklch(0.75_0.14_80)]" />
+                        <span className="text-xs font-medium">{b.rating.toFixed(1)}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-1.5">
+                    <div className="bg-gradient-to-r from-primary to-primary/60 h-1.5 rounded-full" style={{ width: `${Math.min((b.totalBookings / 50) * 100, 100)}%` }} />
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <Card className="border-border/70">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">{lang === "ar" ? "نصائح التحسين" : "Optimization Tips"}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                <p className="text-xs font-semibold text-primary mb-1">{lang === "ar" ? "💡 تحديث الصور" : "💡 Update Images"}</p>
+                <p className="text-xs text-muted-foreground">{lang === "ar" ? "إضافة صور عالية الجودة تزيد الحجوزات بـ 35%" : "High-quality images increase bookings by 35%"}</p>
+              </div>
+              <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
+                <p className="text-xs font-semibold text-accent mb-1">{lang === "ar" ? "📅 التسعير الديناميكي" : "📅 Dynamic Pricing"}</p>
+                <p className="text-xs text-muted-foreground">{lang === "ar" ? "تطبيق أسعار مختلفة حسب الموسم" : "Adjust prices based on seasonal demand"}</p>
+              </div>
+              <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
+                <p className="text-xs font-semibold text-green-600 mb-1">{lang === "ar" ? "🎯 الستخدام الكلمات المفتاحية" : "🎯 SEO Optimization"}</p>
+                <p className="text-xs text-muted-foreground">{lang === "ar" ? "حسّن ظهورك في نتائج البحث" : "Improve your visibility in search results"}</p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
     </div>
   );
 }

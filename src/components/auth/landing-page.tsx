@@ -471,6 +471,151 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Future Services - Coming Soon */}
+      <section className="container mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24">
+        <motion.div
+          {...fadeUp}
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-6">
+            {lang === "ar" ? "قريباً" : "Coming Soon"}
+          </span>
+          <h2 className="section-heading mb-4">
+            {lang === "ar" ? "المزيد من الخدمات الرائعة" : "More Amazing Services"}
+          </h2>
+          <p className="text-muted-foreground">
+            {lang === "ar"
+              ? "نحسّن تجربتك بخدمات إضافية لجعل رحلتك أكثر سهولة وراحة"
+              : "We're expanding to make your travel experience even more seamless and enjoyable"}
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Cars & Ground Transport */}
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.5, delay: 0 }}
+          >
+            <Card className="glass-card h-full overflow-hidden rounded-[28px] border border-border/70 hover:shadow-[0_28px_70px_-35px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-300 group">
+              <div className="h-40 bg-gradient-to-br from-[oklch(0.72_0.16_200)] to-[oklch(0.52_0.12_200)] p-5 flex items-end relative overflow-hidden">
+                <div className="absolute inset-0 oasis-mesh opacity-20" />
+                <div className="relative">
+                  <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm mb-2">
+                    {lang === "ar" ? "النقل الأرضي" : "Ground Transport"}
+                  </div>
+                  <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 12l1.5-4.5h11L19 12H5z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold mb-3">{lang === "ar" ? "تأجير السيارات" : "Car Rentals"}</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  {lang === "ar"
+                    ? "احجز سيارة بسهولة من وإلى المطار، أو استمتع برحلة براً مع أفضل الخيارات."
+                    : "Book cars with ease for airport pickups, city exploration, and road trips. Best rates guaranteed."}
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "أسعار تنافسية" : "Competitive pricing"}
+                  </li>
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "اختيار واسع من السيارات" : "Wide vehicle selection"}
+                  </li>
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "توصيل فوري" : "Instant delivery"}
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Airport Services */}
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.5, delay: 0.08 }}
+          >
+            <Card className="glass-card h-full overflow-hidden rounded-[28px] border border-border/70 hover:shadow-[0_28px_70px_-35px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-300 group">
+              <div className="h-40 bg-gradient-to-br from-[oklch(0.8_0.18_32)] to-[oklch(0.7_0.14_25)] p-5 flex items-end relative overflow-hidden">
+                <div className="absolute inset-0 oasis-mesh opacity-20" />
+                <div className="relative">
+                  <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm mb-2">
+                    {lang === "ar" ? "المطار" : "Airport Services"}
+                  </div>
+                  <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10.33 4.6L5.7 9.23H2v2h3v7h3v-7h6v7h3v-7h3v-2h-3.7l-4.63-4.63L12 2 10.33 4.6zM12 6.04L13.41 7.45 12 8.87 10.59 7.45 12 6.04z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold mb-3">{lang === "ar" ? "خدمات المطار" : "Airport Transfers"}</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  {lang === "ar"
+                    ? "تنقل موثوق من وإلى المطار مع سائقين محترفين وخدمة فئة عالية."
+                    : "Reliable airport pickups and drop-offs with professional drivers and premium service."}
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "تتبع الرحلات" : "Flight tracking"}
+                  </li>
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "سائقون معتمدون" : "Certified drivers"}
+                  </li>
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "سيارات نظيفة" : "Clean vehicles"}
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Travel Insurance & Experiences */}
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.5, delay: 0.16 }}
+          >
+            <Card className="glass-card h-full overflow-hidden rounded-[28px] border border-border/70 hover:shadow-[0_28px_70px_-35px_rgba(15,23,42,0.25)] hover:-translate-y-1 transition-all duration-300 group">
+              <div className="h-40 bg-gradient-to-br from-[oklch(0.72_0.14_145)] to-[oklch(0.54_0.12_145)] p-5 flex items-end relative overflow-hidden">
+                <div className="absolute inset-0 oasis-mesh opacity-20" />
+                <div className="relative">
+                  <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm mb-2">
+                    {lang === "ar" ? "الخبرات" : "Experiences"}
+                  </div>
+                  <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold mb-3">{lang === "ar" ? "التجارب والأنشطة" : "Activities & Tours"}</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  {lang === "ar"
+                    ? "استكشف الوجهات المحلية مع جولات موثوقة وتجارب فريدة لا تُنسى."
+                    : "Discover local attractions with verified tours and unforgettable experiences."}
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "جولات محلية" : "Local tours"}
+                  </li>
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "حجز فوري" : "Instant booking"}
+                  </li>
+                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {lang === "ar" ? "استرجاع الأموال" : "Money-back guarantee"}
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="container mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24">
         <motion.div
